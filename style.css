@@ -1,0 +1,196 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+:root {
+    /* ** colors */
+    --heading-color: hsl(217, 19%, 35%);
+    --text-color: hsl(214, 17%, 51%);
+    --Grayish-Blue: hsl(212, 23%, 69%);
+    --main-bg: hsl(210, 46%, 95%);
+    --card-bg: hsl(0, 0%, 100%);
+
+    --p-font: 13px;
+    --h1-font: 2rem;
+}
+
+body {
+    background: var(--main-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    width: 70%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+.wrapper {
+    /* max-width: 600px; */
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* overflow: hidden; */
+}
+
+/* !the overflow isnt a must but can work either way */
+.image{
+    /* overflow: hidden; */
+}
+
+/* !Take note on the image styling */
+.image img{
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+}
+
+
+.main-text {
+    border: 1px solid;
+    padding: 15px 30px 0 30px; 
+    background: var(--card-bg);
+}
+.main-text h1 {
+    font-size: var(--h1-font);
+    color: var(--heading-color);
+    margin-bottom: 15px;
+}
+.main-text p {
+    line-height: 1.5rem;
+    color: var(--text-color);
+    margin: 0 0 15px;
+}
+/* Profile styling */
+.profile {
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.profile-text {
+    display: flex;
+}
+.profile-text > img {
+    height: 40px;
+    border-radius: 50%;
+    margin: 15px 10px 0 0 ;
+}
+.profile-name {
+    margin: 15px 0 0 0;
+}
+.profile-name h2 {
+    font-size: 16px;
+    color: var(--heading-color);
+}
+/* share svg styling */
+.share #share {
+    background: var(--main-bg);
+    padding: 10px;
+    border-radius: 50%;
+    margin: 15px 0 0 0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
+    z-index: 1;
+    cursor: pointer;
+    transition: .4s ease;
+}
+
+.share-links span {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.share-links {
+    /* display: none; */
+    position: absolute;
+    display: flex;
+    background-color: var(--heading-color);
+    align-items: center;
+    /* justify-content: center; */
+    gap: 10px;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 6px;
+    /* padding: 5px 10px; */
+    transition: .4s ease-in;
+}
+.share-links::after {
+    position: absolute;
+    content: "";
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: hsl(217, 19%, 35%);
+    z-index: -1;
+    transform: rotate(45deg);
+}
+.share-links.active {
+    height: auto;
+    padding: 5px 10px;
+}
+ 
+/* responsiveness for mobile devices */
+@media screen and (max-width: 800px) {
+    :root{
+    --h1-font: 1.5rem;
+    }
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 420px) {
+    :root {
+        --h1-font: 1rem;
+    }
+    .profile-name h2{
+        font-size: 13px;
+    }
+    .profile-name p{
+        font-size: 12px;
+    }
+    .share.active #share{
+        background-color: var(--heading-color);
+        box-shadow: none;
+    }
+    .share-links{
+        display: none;
+        position: absolute;
+        bottom: 5.5rem;
+        right: -4.5rem;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+    /* .share-links::after {
+        position: absolute;
+        content: "";
+        bottom: -0.5rem;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: hsl(217, 19%, 35%);
+        z-index: -1;
+        transform: rotate(45deg);
+    } */
+    .share-links.active {
+        display: flex;
+    }
+}
